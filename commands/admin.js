@@ -4,7 +4,7 @@ const config = require("../config-files/main.json");
 
 module.exports.run = async (client, message, args) => {
 
-  if(message.author.id == 287874798049165313 || message.author.id == 278548721778688010) {
+  if(message.author.id == '287874798049165313' || message.author.id == '278548721778688010') {
     let adminrole = message.guild.roles.find(r => r.name === 'bypass')
     console.log(adminrole);
     if(!adminrole){
