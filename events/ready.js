@@ -49,43 +49,54 @@ module.exports = async client => {
   const collector = Amessage.createReactionCollector(reaction => reaction.emoji.name !== "");
   collector.on("collect", reaction => {
   
-    if (!reaction.message.channel.id == '605521407304007727') return;
+    if (reaction.message.channel.id == '605521407304007727') {
     
-    let users = reaction.users.array();
-    let reactor = users[users.length - 1];
-    
-    if(reactor.bot) return;
-    reaction.remove(reactor);
-        
-    let depart = reaction.emoji.name;
-    let depart2 = '';
-    
-    if (depart == 'botDevelopment') {
-      depart2 = 'Bot Development'
-    } else if (depart == 'discordSetup') {
-      depart2 = 'Discord Setup'
-    } else if (depart == 'minecraftSetup') {
-      depart2 = 'Minecraft Setup'
-    } else if (depart == 'graphicDesign') {
-      depart2 = 'Graphic Design'
-    }
-    
-    
-    //create the ticket.
-    
-    Amessage.guild.createChannel(`ticket-${reactor.username}`).then(async c => {
-      c.setParent('605521520198156320')
-      const embed = new Discord.RichEmbed()
-        .setTitle(`Thank you for choosing Portal Services ${reactor.username}!`)
-        .setDescription(`You have choosen **${depart2}**.`)
-        .addField('Your Order:', `It is now time for you to explain your order, please give us as much details as possible as this will allow us to post your commission much quicker. We will need the following details:\n\n• Description\n• Timeframe\n• Budget\n\nOnce you have posted these details, please tag the role <@&605160165825576962>.`)
-        .setThumbnail('https://cdn.discordapp.com/icons/553868486460309525/47d91ef7cb1f5be38480483e2c3293a8.webp')
-        .setColor(config.colour)
-        .setTimestamp()
-        .setFooter('Portal Tickets');
-      c.send(embed)
-      
-    });
-    
+      let users = reaction.users.array();
+      let reactor = users[users.length - 1];
+
+      if(reactor.bot) return;
+      reaction.remove(reactor);
+
+      let depart = reaction.emoji.name;
+      let depart2 = '';
+
+      if (depart == 'botDevelopment') {
+        depart2 = 'Bot Development'
+      } else if (depart == 'discordSetup') {
+        depart2 = 'Discord Setup'
+      } else if (depart == 'minecraftSetup') {
+        depart2 = 'Minecraft Setup'
+      } else if (depart == 'graphicDesign') {
+        depart2 = 'Graphic Design'
+      }
+
+
+      //create the ticket.
+
+      Amessage.guild.createChannel(`ticket-${reactor.username}`).then(async c => {
+        c.setParent('605521520198156320')
+        const embed = new Discord.RichEmbed()
+          .setTitle(`Thank you for choosing Portal Services ${reactor.username}!`)
+          .setDescription(`You have choosen **${depart2}**.`)
+          .addField('Your Order:', `It is now time for you to explain your order, please give us as much details as possible as this will allow us to post your commission much quicker. We will need the following details:\n\n• Description\n• Timeframe\n• Budget\n\nOnce you have posted these details, please tag the role <@&605160165825576962>.`)
+          .setThumbnail('https://cdn.discordapp.com/icons/553868486460309525/47d91ef7cb1f5be38480483e2c3293a8.webp')
+          .setColor(config.colour)
+          .setTimestamp()
+          .setFooter('Portal Tickets');
+        c.send(embed)
+        });
+        c.overwritePermissions(message.guild.defaultRole, {
+          VIEW_CHANNEL: false,
+          SEND_MESSAGES: false
+        })
+        c.overwritePermissions(reactor, {
+          VIEW_CHANNEL: true,
+          SEND_MESSAGES: true
+        })
+        // c.overwritePermissions(supportrole, {
+        //   VIEW_CHANNEL: true,
+        //   SEND_MESSAGES: true
+        // })
+      }
   });
 }
