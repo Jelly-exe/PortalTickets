@@ -1,0 +1,5 @@
+[ leeksLazyLogger by Eartharoid ] Log File (04/07/2019) -->
+[INFO | 1:44:33] 1: Attempting to load the event 'message'
+[INFO | 1:44:33] 2: Attempting to load the event 'ready'
+[INFO | 1:44:33] 3: Attempting to load the command 'admin.js'
+[INFO | 1:44:33] 4: Attempting to load the command 'announce.js'
