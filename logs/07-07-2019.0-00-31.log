@@ -1,0 +1,8 @@
+[ leeksLazyLogger by Eartharoid ] Log File (07/07/2019) -->
+[INFO | 0:00:31] 1: Attempting to load the command 'admin.js'
+[INFO | 0:00:31] 2: Attempting to load the command 'announce.js'
+[INFO | 0:00:31] 3: Attempting to load the command 'commission.js'
+[INFO | 0:00:31] 4: Attempting to load the command 'ping.js'
+[INFO | 0:00:31] Successfully loaded all commands.
+[INFO | 0:00:31] 5: Attempting to load the event 'message'
+[INFO | 0:00:31] 6: Attempting to load the event 'ready'

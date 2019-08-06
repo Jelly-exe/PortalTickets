@@ -68,39 +68,40 @@ module.exports.run = async (client, message, args) => {
                   .setColor(config.colour);
 
                 c.edit(embed4);
-
+                let role2 = role;
                 message.channel.awaitMessages(message => message.content !== '', { maxMatches: 1, time: 30000, errors: ['time'] })
                   .then(collected => {
-                      const details = collected.first().content;
+                      const budget = collected.first().content;
 
                       const embed44 = new Discord.RichEmbed()
                         .setTitle('Commission Creation System')
                         .setDescription('Please use the instuctions below to create the commission:\n\n**Are there any extra details?**\n\n')
-                        .addField('Commission:', `__Role:__ ${role.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}`)
+                        .addField('Commission:', `__Role:__ ${role2.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}`)
                         .setColor(config.colour);
 
                       c.edit(embed44);
 
                       message.channel.awaitMessages(message => message.content !== '', { maxMatches: 1, time: 30000, errors: ['time'] })
                         .then(async (collected) => {
-                            const budget = collected.first().content;
+
+                            const details = collected.first().content;
 
                             const embed5 = new Discord.RichEmbed()
                               .setTitle('Commission Creation System')
                               .setDescription('Please use the instuctions below to create the commission:\n\n**Please let the client react below to confirm, once the client reacts the commission will be posted.**\n\n')
-                              .addField('Commission:', `__Role:__ ${role.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__${details}`)
+                              .addField('Commission:', `__Role:__ ${role2.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__ ${details}`)
                               .setColor(config.colour);
 
                             const embed6 = new Discord.RichEmbed()
                               .setTitle('Commission Creation System')
                               .setDescription('** **\n<a:tick:606612530378571776> **Commission Posted!**\n\n** **')
-                              .addField('Commission:', `__Role:__ ${role.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__${details}`)
+                              .addField('Commission:', `__Role:__ ${role2.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__ ${details}`)
                               .setColor(config.colour);
 
                             const embed7 = new Discord.RichEmbed()
                               .setTitle('Commission Creation System')
                               .setDescription('** **\n<a:cross:606618471786217485> **Client denied has denied the commission, a member of the Support Team will be with you shortly to seek out why.**\n\n** **')
-                              .addField('Commission:', `__Role:__ ${role.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__${details}`)
+                              .addField('Commission:', `__Role:__ ${role2.name}\n__Title:__ ${title}\n__Description:__ ${description}\n__Timeframe:__ ${timeframe}\n__Budget:__ ${budget}\n__Any extra details?__ ${details}`)
                               .setColor(config.colour);
 
                             c.edit(embed5);
@@ -134,7 +135,7 @@ module.exports.run = async (client, message, args) => {
                                 .addField('Any Extra Details?', `${description}`, true)
                                 .addBlankField(true)
                                 .addField('Ticket:', `<#${message.channel.id}>`, true);
-                                Achannel.send(`<@&${role.id}>`);
+                                Achannel.send(`<@&${role2.id}>`);
                                 let m = await Achannel.send(embed8);
 
                                 m.react('✅');

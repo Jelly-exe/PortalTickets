@@ -1,0 +1,10 @@
+[ leeksLazyLogger by Eartharoid ] Log File (06/07/2019) -->
+[INFO | 23:48:22] 1: Attempting to load the event 'message'
+[INFO | 23:48:22] 2: Attempting to load the event 'ready'
+[INFO | 23:48:22] 3: Attempting to load the command 'admin.js'
+[INFO | 23:48:22] 4: Attempting to load the command 'announce.js'
+[INFO | 23:48:22] 5: Attempting to load the command 'commission.js'
+[INFO | 23:48:22] 6: Attempting to load the command 'ping.js'
+[INFO | 23:48:22] Successfully loaded all commands.
+[INFO | 23:48:22] 6 Users Online
+[INFO | 23:48:22] 1 Guilds
